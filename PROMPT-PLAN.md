@@ -40,7 +40,7 @@ Make the left pane contain properly spaced sections (each step is its own block 
 
 ### Step 6
 
-- [ ] Implement `src/components/VisualPane.tsx` with dynamic component loading and cross-fade
+- [x] Implement `src/components/VisualPane.tsx` with dynamic component loading and cross-fade
 
 Create a `VisualPane` component that accepts the active step’s `visualPane` object with `componentPath` and `props`. Use `next/dynamic` to load a component lazily; because Next.js requires statically analyzable import paths, implement a small resolver function that maps known `componentPath` strings to concrete dynamic imports (e.g., `"visuals/ImageDisplay"` and `"visuals/AttentionVisualizer"`). If the incoming `componentPath` is unknown, render a simple fallback (e.g., a bordered box with a message). Once loaded, render the component with the given props using JSX spread.
 

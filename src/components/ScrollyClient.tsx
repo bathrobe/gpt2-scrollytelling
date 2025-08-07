@@ -34,29 +34,31 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
   const activeStep = storyData.find(step => step.id === activeStepId)
 
   return (
-    <div className="flex flex-col lg:flex-row min-h-screen">
+    <div className="lg:grid lg:grid-cols-2 lg:gap-8 max-w-7xl mx-auto min-h-screen">
       {/* Left pane - Narrative content */}
-      <div className="flex-1 p-8 lg:pr-4">
-        <Scrollama onStepEnter={onStepEnter} offset={0.6}>
-          {storyData.map((step) => (
-            <Step data={step.id} key={step.id}>
-              <div className="max-w-prose mb-16 p-8 bg-white rounded-lg shadow-sm">
-                <div 
-                  dangerouslySetInnerHTML={{ __html: step.proseHtml }}
-                />
-              </div>
-            </Step>
-          ))}
-        </Scrollama>
+      <div className="px-8 py-16 lg:px-12">
+        <div className="prose prose-lg prose-invert prose-gray max-w-none">
+          <Scrollama onStepEnter={onStepEnter} offset={0.6}>
+            {storyData.map((step) => (
+              <Step data={step.id} key={step.id}>
+                <section className="min-h-[60vh] mb-32">
+                  <div 
+                    dangerouslySetInnerHTML={{ __html: step.proseHtml }}
+                  />
+                </section>
+              </Step>
+            ))}
+          </Scrollama>
+        </div>
       </div>
 
       {/* Right pane - Visual and Code panes */}
-      <div className="lg:w-1/2 lg:sticky lg:top-0 lg:h-screen flex flex-col">
+      <div className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col border-l border-gray-800">
         {/* Visual Pane */}
-        <div className="flex-1 p-4 border-b border-gray-200">
+        <div className="h-1/2 bg-gray-900 p-8 overflow-hidden border-b border-gray-800">
           {activeStep && (
             <div className="h-full">
-              <h3 className="text-sm font-medium text-gray-600 mb-2">Visual</h3>
+              <h3 className="text-sm font-medium text-gray-300 mb-4">Visual</h3>
               <div className="h-full">
                 <VisualPane visualPane={activeStep.visualPane} />
               </div>
@@ -65,12 +67,12 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
         </div>
 
         {/* Code Pane */}
-        <div className="flex-1 p-4">
+        <div className="h-1/2 bg-gray-900 p-8 overflow-auto">
           {activeStep && (
             <div className="h-full">
-              <h3 className="text-sm font-medium text-gray-600 mb-2">Code</h3>
-              <div className="h-full bg-gray-900 rounded overflow-auto">
-                <pre className="text-sm text-gray-300 p-4">
+              <h3 className="text-sm font-medium text-gray-300 mb-4">Code</h3>
+              <div className="h-full bg-gray-950 rounded overflow-auto">
+                <pre className="text-sm text-gray-300 p-4 h-full">
                   <code>{activeStep.codeContent}</code>
                 </pre>
               </div>
