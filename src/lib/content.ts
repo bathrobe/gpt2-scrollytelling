@@ -13,7 +13,7 @@ export function loadStoryManifest(): any {
 export function loadMarkdownFile(relativePath: string): { raw: string; html: string } {
   const fullPath = path.join(contentRoot, relativePath.startsWith('/') ? relativePath.slice(1) : relativePath);
   const raw = fs.readFileSync(fullPath, 'utf-8');
-  const html = marked(raw);
+  const html = marked.parse(raw) as string;
   return { raw, html };
 }
 

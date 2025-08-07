@@ -16,7 +16,7 @@ In `content/story.json`, define an initial array of one or two step objects that
 
 ### Step 3
 
-- [ ] Implement `src/lib/content.ts` data loaders to read all content at build time
+- [x] Implement `src/lib/content.ts` data loaders to read all content at build time
 
 Create a new `src/lib/content.ts` module that exports small, focused functions to load the story manifest and associated files synchronously during build-time execution. Add a function to read and parse `content/story.json` (e.g., `loadStoryManifest`). Add a function to read a Markdown file from disk by a leading-slash path (e.g., `"/prose/01-intro.md"`) and return both the raw Markdown and the HTML string after conversion using your chosen library (`marked` is recommended). Add a function to read a code file from disk (by its leading-slash path under `content/code/`) into a string. Keep the function signatures simple and permissive with TypeScript—use `any` for the manifest step shape initially to reduce friction.
 
@@ -24,7 +24,7 @@ Add a small utility that converts a `highlight` string like `"10-25"` into a zer
 
 ### Step 4
 
-- [ ] Build the three-pane static layout in `src/app/page.tsx` (Server Component)
+- [x] Build the three-pane static layout in `src/app/page.tsx` (Server Component)
 
 Open or create `src/app/page.tsx` as a Server Component. At the top of the module, call the `loadStoryData()` function from `src/lib/content.ts` to fetch the fully prepared data at build time. Construct the skeleton layout using Tailwind CSS: a responsive container that becomes a two-column grid or flex layout on large screens. The left column is a vertically scrollable narrative area (normal flow), and the right column is a sticky container split into two vertically stacked panes of equal height. Apply `sticky top-0` to the right column so it remains fixed while the left column scrolls. Assign appropriate heights (e.g., `h-screen` on the sticky column), padding, and background colors to ensure clarity.
 
