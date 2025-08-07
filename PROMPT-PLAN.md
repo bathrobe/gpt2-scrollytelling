@@ -8,7 +8,7 @@ If any of these packages are already installed, only add the missing ones. Keep 
 
 ### Step 2
 
-- [ ] Scaffold the content and public directories with placeholder assets
+- [x] Scaffold the content and public directories with placeholder assets
 
 Create the directories and placeholder files described by the PRD so that there is a minimal, working data set. Under the project root, create a `content/` directory with three subfolders: `content/prose/`, `content/code/`, and the `content/story.json` file at the top level of `content/`. In `content/prose/`, add a single placeholder Markdown file named `01-intro.md` with a few paragraphs of narrative text. In `content/code/`, add a small example source file (the PRD example is `model.py`; you can use that exact filename) with at least 40 lines to make scrolling/highlighting meaningful. In `public/images/` (create it if it doesn’t exist), add one placeholder image file, e.g., `overview.png`. These placeholders will be referenced from `story.json`.
 
