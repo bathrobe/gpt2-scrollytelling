@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Scrollama, Step } from 'react-scrollama'
+import VisualPane from './VisualPane'
 
 interface StoryStep {
   id: string
@@ -56,10 +57,8 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
           {activeStep && (
             <div className="h-full">
               <h3 className="text-sm font-medium text-gray-600 mb-2">Visual</h3>
-              <div className="h-full bg-gray-50 rounded border flex items-center justify-center">
-                <p className="text-gray-500">
-                  Component: {activeStep.visualPane.componentPath}
-                </p>
+              <div className="h-full">
+                <VisualPane visualPane={activeStep.visualPane} />
               </div>
             </div>
           )}

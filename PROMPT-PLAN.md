@@ -32,7 +32,7 @@ Render a client-side child component (created in the next step) and pass in the 
 
 ### Step 5
 
-- [ ] Create a client wrapper to manage active step state and scroll events
+- [x] Create a client wrapper to manage active step state and scroll events
 
 Create a new client component (e.g., `src/components/ScrollyClient.tsx`) with `"use client"` at the top. It should accept the fully loaded story data from the server page via props. Initialize `const [activeStepId, setActiveStepId] = useState<string>(story[0].id);`. Use `react-scrollama` to wrap the left-pane narrative content: place a `<Scrollama onStepEnter={...}>` around a mapped list of `<Step data={step.id}>` elements, where each step wraps the rendered prose HTML for that step. Set the handler so that when a step enters, it calls `setActiveStepId(id)`. Choose a conservative `offset` and/or threshold so steps activate near mid-viewport for clarity (e.g., offset around 0.6–0.7).
 
