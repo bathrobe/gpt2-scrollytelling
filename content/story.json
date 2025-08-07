@@ -1,0 +1,32 @@
+[
+  {
+    "id": "intro-to-model",
+    "prosePath": "/prose/01-intro.md",
+    "visualPane": {
+      "componentPath": "visuals/ImageDisplay",
+      "props": {
+        "src": "/images/overview.png",
+        "alt": "GPT-2 Model Overview"
+      }
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "10-25"
+    }
+  },
+  {
+    "id": "attention-mechanism",
+    "prosePath": "/prose/01-intro.md",
+    "visualPane": {
+      "componentPath": "visuals/ImageDisplay",
+      "props": {
+        "src": "/images/overview.png",
+        "alt": "Multi-Head Attention Visualization"
+      }
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "27-45"
+    }
+  }
+]

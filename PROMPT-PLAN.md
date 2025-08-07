@@ -1,6 +1,6 @@
 ### Step 1
 
-- [ ] Initialize dependencies and Tailwind CSS per the PRD
+- [x] Initialize dependencies and Tailwind CSS per the PRD
 
 Set up the project dependencies needed to execute the PRD exactly as written. Install `react-scrollama`, `react-syntax-highlighter`, and either `marked` or `showdown` for Markdown-to-HTML conversion (choose one; `marked` is fine). Ensure Tailwind CSS is configured for the existing Next.js (App Router) project: create a `tailwind.config.js` at the root with the standard `content` glob paths that include `src/**/*.{ts,tsx}` and `app/**/*.{ts,tsx}`, enable any default plugins if you prefer, and confirm `postcss.config.mjs` is already present (it exists in this repo). Verify `src/app/globals.css` imports Tailwind’s base, components, and utilities layers at the top of the file. This step ensures stylistic utilities and core libraries are available before you start building components and layout.
 
