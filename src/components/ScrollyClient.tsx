@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { Scrollama, Step } from 'react-scrollama'
 import VisualPane from './VisualPane'
+import CodePane from './CodePane'
 
 interface StoryStep {
   id: string
@@ -71,10 +72,12 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
           {activeStep && (
             <div className="h-full">
               <h3 className="text-sm font-medium text-gray-300 mb-4">Code</h3>
-              <div className="h-full bg-gray-950 rounded overflow-auto">
-                <pre className="text-sm text-gray-300 p-4 h-full">
-                  <code>{activeStep.codeContent}</code>
-                </pre>
+              <div className="h-full">
+                <CodePane
+                  codePane={activeStep.codePane}
+                  codeContent={activeStep.codeContent}
+                  highlightRange={activeStep.highlightRange}
+                />
               </div>
             </div>
           )}

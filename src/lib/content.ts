@@ -22,11 +22,11 @@ export function loadCodeFile(relativePath: string): string {
   return fs.readFileSync(fullPath, 'utf-8');
 }
 
-export function parseHighlightRange(rangeString: string): { start: number; end: number } {
+export function parseHighlightRange(rangeString: string): [number, number] {
   const [startStr, endStr] = rangeString.split('-');
-  const start = parseInt(startStr, 10) - 1;
-  const end = parseInt(endStr, 10) - 1;
-  return { start, end };
+  const start = parseInt(startStr, 10);
+  const end = parseInt(endStr, 10);
+  return [start, end];
 }
 
 export function loadStoryData(): any[] {
