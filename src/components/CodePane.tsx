@@ -72,7 +72,7 @@ export default function CodePane({ codePane, codeContent, highlightRange }: Code
       key={codePane.filePath}
       className={`transition-opacity duration-300 h-full ${isVisible ? 'opacity-100' : 'opacity-0'}`}
     >
-      <div className="h-full bg-gray-950 rounded overflow-auto">
+      <div className="h-full bg-gray-950 rounded-lg overflow-auto">
         <SyntaxHighlighter
           language="python"
           style={nightOwl}
@@ -93,10 +93,10 @@ export default function CodePane({ codePane, codeContent, highlightRange }: Code
           }}
           customStyle={{
             margin: 0,
-            padding: '1rem',
+            padding: '1.25rem',
             backgroundColor: 'transparent',
-            fontSize: '0.875rem',
-            lineHeight: '1.5'
+            fontSize: '0.9rem',
+            lineHeight: '1.6'
           }}
         >
           {codeContent}

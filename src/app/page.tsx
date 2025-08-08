@@ -5,7 +5,7 @@ export default function Home() {
   const storyData = loadStoryData();
 
   return (
-    <div className="min-h-screen bg-gray-950">
+    <div className="min-h-screen bg-gray-950 w-full">
       <ScrollyClient storyData={storyData} />
     </div>
   );

@@ -35,10 +35,10 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
   const activeStep = storyData.find(step => step.id === activeStepId)
 
   return (
-    <div className="lg:grid lg:grid-cols-2 lg:gap-8 max-w-7xl mx-auto min-h-screen">
+    <div className="lg:grid lg:grid-cols-[minmax(0,_1fr)_55%] xl:grid-cols-[minmax(0,_1fr)_50%] max-w-[1800px] mx-auto min-h-screen">
       {/* Left pane - Narrative content */}
-      <div className="px-8 py-16 lg:px-12">
-        <div className="prose prose-lg prose-invert prose-gray max-w-none">
+      <div className="px-8 py-16 lg:px-12 xl:px-20 2xl:px-24">
+        <div className="prose prose-lg prose-invert prose-gray prose-p:text-gray-300 prose-headings:text-gray-100" style={{ maxWidth: '65ch' }}>
           <Scrollama onStepEnter={onStepEnter} offset={0.6}>
             {storyData.map((step) => (
               <Step data={step.id} key={step.id}>
@@ -56,11 +56,11 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
       {/* Right pane - Visual and Code panes */}
       <div className="lg:sticky lg:top-0 lg:h-screen lg:flex lg:flex-col border-l border-gray-800">
         {/* Visual Pane */}
-        <div className="h-1/2 bg-gray-900 p-8 overflow-hidden border-b border-gray-800">
+        <div className="h-1/2 bg-gray-900 p-6 xl:p-8 overflow-hidden border-b border-gray-800">
           {activeStep && (
-            <div className="h-full">
-              <h3 className="text-sm font-medium text-gray-300 mb-4">Visual</h3>
-              <div className="h-full">
+            <div className="h-full flex flex-col">
+              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Visual</h3>
+              <div className="flex-1 overflow-hidden">
                 <VisualPane visualPane={activeStep.visualPane} />
               </div>
             </div>
@@ -68,11 +68,11 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
         </div>
 
         {/* Code Pane */}
-        <div className="h-1/2 bg-gray-900 p-8 overflow-auto">
+        <div className="h-1/2 bg-gray-900 p-6 xl:p-8 overflow-auto">
           {activeStep && (
-            <div className="h-full">
-              <h3 className="text-sm font-medium text-gray-300 mb-4">Code</h3>
-              <div className="h-full">
+            <div className="h-full flex flex-col">
+              <h3 className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3">Code</h3>
+              <div className="flex-1 overflow-auto">
                 <CodePane
                   codePane={activeStep.codePane}
                   codeContent={activeStep.codeContent}
