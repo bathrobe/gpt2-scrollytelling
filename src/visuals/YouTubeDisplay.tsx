@@ -23,14 +23,11 @@ export default function YouTubeDisplay({
   muted = false,
   caption 
 }: YouTubeDisplayProps) {
-  // Build URL with timestamp if needed
-  const videoUrl = start > 0 ? `${url}&t=${start}` : url
-
   return (
     <div className="w-full h-full flex flex-col justify-center items-center p-4">
       <div className="w-full max-w-4xl" style={{ aspectRatio: '16/9' }}>
         <ReactPlayer
-          src={videoUrl}
+          src={url}
           playing={playing}
           loop={loop}
           controls={controls}
@@ -40,6 +37,7 @@ export default function YouTubeDisplay({
           config={{
             youtube: {
               playerVars: {
+                start: start,
                 modestbranding: 1,
                 rel: 0
               }
