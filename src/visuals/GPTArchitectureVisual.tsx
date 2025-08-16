@@ -49,12 +49,12 @@ const GPTArchitectureVisual = () => {
       <div style={{
         flex: 1,
         position: 'relative',
-        padding: '20px'
+        padding: '15px'
       }}>
         <svg 
           width="100%" 
           height="100%" 
-          viewBox="0 0 800 400" 
+          viewBox="0 0 800 360" 
           preserveAspectRatio="xMidYMid meet"
         >
           {/* Flow Lines */}
@@ -78,10 +78,10 @@ const GPTArchitectureVisual = () => {
             onMouseLeave={() => setHoveredComponent(null)}
             style={{ cursor: 'pointer' }}
           >
-            <rect x="50" y="350" width="200" height="40" rx="8" 
+            <rect x="50" y="310" width="200" height="35" rx="8" 
                   fill={hoveredComponent === 'tokens' ? 'rgba(100, 255, 218, 0.2)' : 'rgba(40, 45, 70, 0.8)'}
                   stroke="rgba(100, 255, 218, 0.4)" strokeWidth="2"/>
-            <text x="150" y="375" textAnchor="middle" fill="#e0e6ed" fontSize="14">
+            <text x="150" y="332" textAnchor="middle" fill="#e0e6ed" fontSize="13">
               Hi, my name is
             </text>
           </g>
@@ -92,11 +92,11 @@ const GPTArchitectureVisual = () => {
             onMouseLeave={() => setHoveredComponent(null)}
             style={{ cursor: 'pointer' }}
           >
-            <rect x="50" y="280" width="90" height="50" rx="8"
+            <rect x="50" y="250" width="90" height="45" rx="8"
                   fill={hoveredComponent === 'wte' ? 'rgba(102, 126, 234, 0.3)' : 'rgba(40, 45, 70, 0.8)'}
                   stroke="rgba(102, 126, 234, 0.6)" strokeWidth="2"/>
-            <text x="95" y="300" textAnchor="middle" fill="#e0e6ed" fontSize="12">wte</text>
-            <text x="95" y="315" textAnchor="middle" fill="#999" fontSize="10">50k→768</text>
+            <text x="95" y="268" textAnchor="middle" fill="#e0e6ed" fontSize="11">wte</text>
+            <text x="95" y="282" textAnchor="middle" fill="#999" fontSize="9">50k→768</text>
           </g>
 
           {/* Position Embeddings */}
@@ -105,19 +105,19 @@ const GPTArchitectureVisual = () => {
             onMouseLeave={() => setHoveredComponent(null)}
             style={{ cursor: 'pointer' }}
           >
-            <rect x="160" y="280" width="90" height="50" rx="8"
+            <rect x="160" y="250" width="90" height="45" rx="8"
                   fill={hoveredComponent === 'wpe' ? 'rgba(102, 126, 234, 0.3)' : 'rgba(40, 45, 70, 0.8)'}
                   stroke="rgba(102, 126, 234, 0.6)" strokeWidth="2"/>
-            <text x="205" y="300" textAnchor="middle" fill="#e0e6ed" fontSize="12">wpe</text>
-            <text x="205" y="315" textAnchor="middle" fill="#999" fontSize="10">1024→768</text>
+            <text x="205" y="268" textAnchor="middle" fill="#e0e6ed" fontSize="11">wpe</text>
+            <text x="205" y="282" textAnchor="middle" fill="#999" fontSize="9">1024→768</text>
           </g>
 
           {/* Addition Circle */}
-          <circle cx="150" cy="240" r="15" 
+          <circle cx="150" cy="215" r="14" 
                   fill="rgba(255, 200, 100, 0.2)" 
                   stroke="rgba(255, 200, 100, 0.6)" 
                   strokeWidth="2"/>
-          <text x="150" y="245" textAnchor="middle" fill="#ffc864" fontSize="20">+</text>
+          <text x="150" y="220" textAnchor="middle" fill="#ffc864" fontSize="18">+</text>
 
           {/* Transformer Blocks */}
           <g 
@@ -129,32 +129,32 @@ const GPTArchitectureVisual = () => {
               <g key={i}>
                 <rect 
                   x="300" 
-                  y={180 - i * 30} 
+                  y={160 - i * 25} 
                   width="200" 
-                  height="25" 
+                  height="22" 
                   rx="6"
                   fill={hoveredComponent === 'blocks' ? 'rgba(100, 255, 218, 0.2)' : 'rgba(40, 45, 70, 0.8)'}
                   stroke="rgba(100, 255, 218, 0.4)" 
                   strokeWidth="1.5"
                   opacity={i === 0 ? 1 : 0.6}
                 />
-                <text x="400" y={197 - i * 30} textAnchor="middle" fill="#e0e6ed" fontSize="11">
+                <text x="400" y={175 - i * 25} textAnchor="middle" fill="#e0e6ed" fontSize="10">
                   {i === 0 ? 'Block 0: Attn → FFN' : i === 1 ? 'Block 1: Attn → FFN' : '...'}
                 </text>
               </g>
             ))}
-            <text x="400" y={110} textAnchor="middle" fill="#999" fontSize="10">× 12 layers</text>
+            <text x="400" y={95} textAnchor="middle" fill="#999" fontSize="9">× 12 layers</text>
           </g>
 
           {/* Residual Path */}
           <path 
-            d="M 150 225 Q 280 225 280 180 L 520 180 Q 540 180 540 160"
+            d="M 150 200 Q 150 160 280 160 L 520 160 Q 540 160 540 140"
             fill="none" 
             stroke="rgba(255, 107, 107, 0.3)" 
             strokeWidth="2"
             strokeDasharray="5,5"
           />
-          <text x="380" y="215" fill="rgba(255, 107, 107, 0.5)" fontSize="10">residual stream</text>
+          <text x="380" y="190" fill="rgba(255, 107, 107, 0.5)" fontSize="9">residual stream</text>
 
           {/* Layer Norm */}
           <g 
@@ -162,10 +162,10 @@ const GPTArchitectureVisual = () => {
             onMouseLeave={() => setHoveredComponent(null)}
             style={{ cursor: 'pointer' }}
           >
-            <rect x="490" y="140" width="100" height="30" rx="6"
+            <rect x="490" y="120" width="100" height="28" rx="6"
                   fill={hoveredComponent === 'ln_f' ? 'rgba(255, 200, 100, 0.3)' : 'rgba(40, 45, 70, 0.8)'}
                   stroke="rgba(255, 200, 100, 0.6)" strokeWidth="2"/>
-            <text x="540" y="159" textAnchor="middle" fill="#e0e6ed" fontSize="12">ln_f</text>
+            <text x="540" y="138" textAnchor="middle" fill="#e0e6ed" fontSize="11">ln_f</text>
           </g>
 
           {/* LM Head */}
@@ -174,23 +174,23 @@ const GPTArchitectureVisual = () => {
             onMouseLeave={() => setHoveredComponent(null)}
             style={{ cursor: 'pointer' }}
           >
-            <rect x="620" y="80" width="120" height="40" rx="8"
+            <rect x="620" y="70" width="120" height="35" rx="8"
                   fill={hoveredComponent === 'lm_head' ? 'rgba(255, 107, 107, 0.3)' : 'rgba(40, 45, 70, 0.8)'}
                   stroke="rgba(255, 107, 107, 0.6)" strokeWidth="2"/>
-            <text x="680" y="98" textAnchor="middle" fill="#e0e6ed" fontSize="12">lm_head</text>
-            <text x="680" y="112" textAnchor="middle" fill="#999" fontSize="10">768→50k</text>
+            <text x="680" y="85" textAnchor="middle" fill="#e0e6ed" fontSize="11">lm_head</text>
+            <text x="680" y="98" textAnchor="middle" fill="#999" fontSize="9">768→50k</text>
           </g>
 
           {/* Weight Tying Curve */}
           <path 
-            d="M 95 280 Q 95 50 680 50 Q 680 80 680 80"
+            d="M 95 250 Q 95 40 680 40 Q 680 70 680 70"
             fill="none" 
             stroke="rgba(255, 107, 107, 0.4)" 
             strokeWidth="2"
             strokeDasharray="8,4"
             filter="url(#glow)"
           />
-          <text x="400" y="45" textAnchor="middle" fill="rgba(255, 107, 107, 0.7)" fontSize="11">
+          <text x="400" y="35" textAnchor="middle" fill="rgba(255, 107, 107, 0.7)" fontSize="10">
             weight sharing (wte.T = lm_head)
           </text>
 
@@ -200,10 +200,10 @@ const GPTArchitectureVisual = () => {
             onMouseLeave={() => setHoveredComponent(null)}
             style={{ cursor: 'pointer' }}
           >
-            <rect x="620" y="20" width="120" height="30" rx="6"
+            <rect x="620" y="15" width="120" height="28" rx="6"
                   fill={hoveredComponent === 'output' ? 'rgba(100, 255, 218, 0.3)' : 'rgba(40, 45, 70, 0.8)'}
                   stroke="rgba(100, 255, 218, 0.6)" strokeWidth="2"/>
-            <text x="680" y="40" textAnchor="middle" fill="#64f5d0" fontSize="12">
+            <text x="680" y="33" textAnchor="middle" fill="#64f5d0" fontSize="11">
               P(next token)
             </text>
           </g>
@@ -215,13 +215,13 @@ const GPTArchitectureVisual = () => {
             </marker>
           </defs>
           
-          <path d="M 150 350 L 150 330" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
-          <path d="M 95 280 L 95 255 L 135 255" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
-          <path d="M 205 280 L 205 255 L 165 255" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
-          <path d="M 150 225 L 150 200 L 300 200" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
-          <path d="M 500 180 L 540 180 L 540 170" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
-          <path d="M 540 140 L 540 120 L 620 120 L 620 100" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
-          <path d="M 680 80 L 680 50" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+          <path d="M 150 310 L 150 295" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+          <path d="M 95 250 L 95 230 L 135 230" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+          <path d="M 205 250 L 205 230 L 165 230" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+          <path d="M 150 200 L 150 180 L 300 180" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+          <path d="M 500 160 L 540 160 L 540 148" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+          <path d="M 540 120 L 540 105 L 620 105 L 620 88" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
+          <path d="M 680 70 L 680 43" stroke="url(#flowGradient)" strokeWidth="2" markerEnd="url(#arrowhead)" />
 
           {/* Animated Data Flow Particles */}
           {[0, 33, 66].map(offset => (
@@ -235,7 +235,7 @@ const GPTArchitectureVisual = () => {
               </animateMotion>
             </circle>
           ))}
-          <path id="dataPath" d="M 150 370 L 150 255 L 400 180 L 540 155 L 680 100 L 680 35" 
+          <path id="dataPath" d="M 150 327 L 150 230 L 400 160 L 540 134 L 680 87 L 680 29" 
                 fill="none" stroke="none" />
         </svg>
       </div>
@@ -243,16 +243,16 @@ const GPTArchitectureVisual = () => {
       {/* Info Panel */}
       <div style={{
         borderTop: '1px solid rgba(100, 255, 218, 0.2)',
-        padding: '12px 20px',
+        padding: '10px 20px',
         background: 'rgba(10, 15, 30, 0.9)',
-        minHeight: '60px',
+        minHeight: '50px',
         display: 'flex',
         alignItems: 'center'
       }}>
         <div style={{
-          fontSize: '12px',
+          fontSize: '11px',
           color: 'rgba(224, 230, 237, 0.8)',
-          lineHeight: '1.4'
+          lineHeight: '1.3'
         }}>
           {getInfoText()}
         </div>
