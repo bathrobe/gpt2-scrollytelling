@@ -1,13 +1,10 @@
 [
   {
-    "id": "intro-to-model",
+    "id": "intro-training-results",
     "prosePath": "/prose/01-intro.md",
     "visualPane": {
-      "componentPath": "visuals/ImageDisplay",
-      "props": {
-        "src": "/images/overview.png",
-        "alt": "GPT-2 Model Overview"
-      }
+      "componentPath": "visuals/TrainingPlotDisplay",
+      "props": {}
     },
     "codePane": {
       "filePath": "/code/model.py",
@@ -16,17 +13,42 @@
   },
   {
     "id": "attention-mechanism",
-    "prosePath": "/prose/01-intro.md",
+    "prosePath": "/prose/02-attention.md",
     "visualPane": {
-      "componentPath": "visuals/ImageDisplay",
+      "componentPath": "visuals/CourseImageDisplay",
       "props": {
         "src": "/images/overview.png",
-        "alt": "Multi-Head Attention Visualization"
+        "alt": "Multi-Head Attention Visualization",
+        "caption": "Multi-head attention allows the model to jointly attend to information from different representation subspaces"
       }
     },
     "codePane": {
       "filePath": "/code/model.py",
       "highlight": "27-45"
+    }
+  },
+  {
+    "id": "interactive-model",
+    "prosePath": "/prose/03-model.md",
+    "visualPane": {
+      "componentPath": "visuals/GradioSpaceDisplay",
+      "props": {}
+    },
+    "codePane": {
+      "filePath": "/code/gradio.py",
+      "highlight": ""
+    }
+  },
+  {
+    "id": "architecture",
+    "prosePath": "/prose/04-arch.md",
+    "visualPane": {
+      "componentPath": "visuals/GPTArchitectureVisual",
+      "props": {}
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "122-128"
     }
   }
 ]

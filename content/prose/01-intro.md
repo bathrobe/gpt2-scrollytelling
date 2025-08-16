@@ -1,11 +1,7 @@
-# Understanding GPT-2: A Journey Through Neural Language Modeling
+## Introduction
 
-Welcome to an exploration of GPT-2, one of the most influential language models of our time. This interactive guide will take you through the architecture, training process, and inner workings of this remarkable neural network.
+I recently finished Andrej Karpathy's 1-2 punch of GPT from scratch, developing both his pico-sized GPT with character-level tokens and Tiny Shakespeare, as well as the heavier duty reproduction of GPT-2 124M, on 10B tokens of educational data and with a variety of production grade optimizations.
 
-GPT-2 represents a significant leap in natural language processing, demonstrating that large-scale unsupervised learning can produce models capable of generating coherent, contextually relevant text across a wide variety of tasks and domains.
+Both were fascinating and a treat to study, while the second one felt like a true trial-by-fire rite of passage—I've spent the past couple days banging my head on the desk while my training runs crash and overfit all while my expensive GPU servers burn the dollars away.
 
-## The Foundation: Transformer Architecture
-
-At its core, GPT-2 builds upon the transformer architecture introduced by Vaswani et al. The model uses a decoder-only approach, processing text autoregressively to predict the next token in a sequence. This seemingly simple objective leads to emergent capabilities that surprised even its creators.
-
-The architecture consists of multiple layers of self-attention mechanisms and feed-forward networks, each contributing to the model's ability to capture complex patterns in language. As we dive deeper into the implementation, you'll see how these components work together to create such powerful text generation capabilities.
+And then—sweet, sweet victory, with my training run complete and my GPT-2 passing all the evals at the levels Karpathy's model did.

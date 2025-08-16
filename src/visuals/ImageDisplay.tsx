@@ -1,35 +1,39 @@
 interface ImageDisplayProps {
   src: string
   alt: string
+  caption?: string
 }
 
-export default function ImageDisplay({ src, alt }: ImageDisplayProps) {
+export default function ImageDisplay({ src, alt, caption }: ImageDisplayProps) {
   return (
-    <div className="w-full bg-gradient-to-br from-blue-100 to-blue-200 rounded-lg p-6 border-2 border-blue-300">
-      <div className="text-center">
-        <div className="bg-blue-500 text-white px-4 py-2 rounded-full mb-4 text-sm font-semibold inline-block">
-          🎯 SCROLL TRIGGER ACTIVE
-        </div>
-        <div className="bg-white rounded-lg p-4 shadow-inner">
+    <div className="w-full h-full flex flex-col justify-center items-center p-4">
+      <div className="w-full h-full flex flex-col justify-center items-center">
+        <div className="bg-gray-900 rounded-lg overflow-hidden shadow-2xl max-w-full max-h-full flex items-center justify-center">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src={src} 
             alt={alt}
-            className="max-w-full h-auto rounded"
+            className="max-w-full max-h-full object-contain"
             onError={(e) => {
               // Fallback if image doesn't exist
               const target = e.target as HTMLImageElement
               target.style.display = 'none'
               const parent = target.parentElement
               if (parent) {
-                parent.innerHTML = `<div class="text-gray-600 py-8"><div class="text-4xl mb-2">🖼️</div><p>Image: ${alt}</p><p class="text-sm text-gray-400">${src}</p></div>`
+                parent.innerHTML = `<div class="flex flex-col items-center justify-center py-16 px-8 bg-gray-800">
+                  <div class="text-6xl mb-4 opacity-50">🖼️</div>
+                  <p class="text-gray-400 text-lg mb-2">${alt}</p>
+                  <p class="text-gray-600 text-sm font-mono">${src}</p>
+                </div>`
               }
             }}
           />
         </div>
-        <div className="mt-4 text-blue-700 font-medium">
-          Step: {alt}
-        </div>
+        {caption && (
+          <div className="mt-2 text-gray-400 text-xs text-center">
+            {caption}
+          </div>
+        )}
       </div>
     </div>
   )

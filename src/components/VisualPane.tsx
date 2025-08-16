@@ -21,6 +21,22 @@ const componentResolver = (componentPath: string) => {
       return dynamic(() => import('../visuals/AttentionVisualizer'), {
         loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
       })
+    case 'visuals/TrainingPlotDisplay':
+      return dynamic(() => import('../visuals/TrainingPlotDisplay'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
+    case 'visuals/CourseImageDisplay':
+      return dynamic(() => import('../visuals/CourseImageDisplay'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
+    case 'visuals/GradioSpaceDisplay':
+      return dynamic(() => import('../visuals/GradioSpaceDisplay'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
+    case 'visuals/GPTArchitectureVisual':
+      return dynamic(() => import('../visuals/GPTArchitectureVisual'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
     default:
       return null
   }
