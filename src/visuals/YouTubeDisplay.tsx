@@ -27,10 +27,10 @@ export default function YouTubeDisplay({
   const videoUrl = start > 0 ? `${url}&t=${start}` : url
 
   return (
-    <div className="w-full h-full flex flex-col p-4">
-      <div className="flex-1 relative bg-gray-900 rounded-lg overflow-hidden shadow-2xl">
+    <div className="w-full h-full flex flex-col justify-center items-center p-4">
+      <div className="w-full max-w-4xl" style={{ aspectRatio: '16/9' }}>
         <ReactPlayer
-          url={videoUrl}
+          src={videoUrl}
           playing={playing}
           loop={loop}
           controls={controls}
@@ -48,7 +48,7 @@ export default function YouTubeDisplay({
         />
       </div>
       {caption && (
-        <div className="mt-4 text-gray-400 text-sm text-center">
+        <div className="mt-4 text-gray-400 text-sm text-center max-w-4xl">
           {caption}
         </div>
       )}
