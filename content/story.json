@@ -50,5 +50,23 @@
       "filePath": "/code/model.py",
       "highlight": "122-128"
     }
+  },
+  {
+    "id": "blocks",
+    "prosePath": "/prose/05-block.md",
+    "visualPane": {
+      "componentPath": "visuals/YouTubeDisplay",
+      "props": {
+        "url": "https://www.youtube.com/watch?v=DAOcjicFr1Y",
+        "start": 2820,
+        "playing": false,
+        "controls": true,
+        "caption": "Serena Yeung's excellent description of residuals in CNNs was my introduction to the concept, and I highly recommend it!"
+      }
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "91-103"
+    }
   }
 ]

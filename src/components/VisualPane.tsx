@@ -37,6 +37,10 @@ const componentResolver = (componentPath: string) => {
       return dynamic(() => import('../visuals/GPTArchitectureVisual'), {
         loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
       })
+    case 'visuals/YouTubeDisplay':
+      return dynamic(() => import('../visuals/YouTubeDisplay'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
     default:
       return null
   }

@@ -13,6 +13,7 @@
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-player": "^3.3.1",
     "react-scrollama": "^2.4.2",
     "react-syntax-highlighter": "^15.6.1"
   },
