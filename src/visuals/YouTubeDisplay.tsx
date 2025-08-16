@@ -21,37 +21,41 @@ export default function YouTubeDisplay({
   muted = false,
   caption 
 }: YouTubeDisplayProps) {
-  const playerConfig = {
-    youtube: {
-      playerVars: {
-        start: start,
-        modestbranding: 1,
-        rel: 0
-      }
-    }
-  }
+  // Append timestamp to URL using ?t= parameter
+  const videoUrl = start > 0 ? `${url}&t=${start}` : url
 
   return (
     <div className="w-full h-full flex flex-col justify-center items-center p-4">
-      <div className="w-full flex-1 flex flex-col justify-center items-center">
-        <div className="w-full max-w-4xl aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-2xl">
-          <ReactPlayer
-            url={url}
-            playing={playing}
-            loop={loop}
-            controls={controls}
-            muted={muted}
-            width="100%"
-            height="100%"
-            config={playerConfig}
-          />
+      <div className="w-full h-full max-w-4xl flex flex-col gap-4">
+        <div className="flex-1 flex items-center justify-center">
+          <div className="w-full aspect-video bg-gray-900 rounded-lg overflow-hidden shadow-2xl relative">
+            <ReactPlayer
+              url={videoUrl}
+              playing={playing}
+              loop={loop}
+              controls={controls}
+              muted={muted}
+              width="100%"
+              height="100%"
+              style={{ position: 'absolute', top: 0, left: 0 }}
+              config={{
+                youtube: {
+                  playerVars: {
+                    modestbranding: 1,
+                    rel: 0,
+                    start: start
+                  }
+                }
+              }}
+            />
+          </div>
         </div>
+        {caption && (
+          <div className="text-gray-400 text-sm text-center px-4">
+            {caption}
+          </div>
+        )}
       </div>
-      {caption && (
-        <div className="mt-4 mb-4 text-gray-400 text-sm text-center max-w-4xl">
-          {caption}
-        </div>
-      )}
     </div>
   )
 }
