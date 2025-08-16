@@ -23,9 +23,18 @@ export function loadCodeFile(relativePath: string): string {
 }
 
 export function parseHighlightRange(rangeString: string): [number, number] {
+  if (!rangeString || rangeString.trim() === '') {
+    return [0, 0]; // No highlighting when range is empty
+  }
   const [startStr, endStr] = rangeString.split('-');
   const start = parseInt(startStr, 10);
   const end = parseInt(endStr, 10);
+  
+  // Validate that we got valid numbers
+  if (isNaN(start) || isNaN(end)) {
+    return [0, 0];
+  }
+  
   return [start, end];
 }
 

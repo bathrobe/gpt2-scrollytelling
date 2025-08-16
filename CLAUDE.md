@@ -107,7 +107,7 @@ case 'visuals/NewComponent':
 
 ## Key Implementation Details
 
-- **Scroll Offset**: Set to 0.6 in Scrollama (triggers when step is 60% in viewport)
+- **Scroll Offset**: Set to 0.1 in Scrollama (triggers when step is 10% into viewport)
 - **Transitions**: 300ms cross-fade on content changes
 - **Code Highlighting**: Blue background with left border for highlighted lines
 - **Responsive**: Collapses to single column on mobile via Tailwind classes

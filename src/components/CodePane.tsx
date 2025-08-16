@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { nightOwl } from 'react-syntax-highlighter/dist/esm/styles/prism'
 
@@ -16,6 +16,10 @@ interface CodePaneProps {
 // Helper function to check if a line is in the highlight range
 const isLineInRange = (lineNumber: number, range: [number, number]): boolean => {
   const [start, end] = range
+  // No highlighting when range is [0, 0]
+  if (start === 0 && end === 0) {
+    return false
+  }
   return lineNumber >= start && lineNumber <= end
 }
 
@@ -41,7 +45,6 @@ const createLineProps = (lineNumber: number, range: [number, number]) => {
 
 export default function CodePane({ codePane, codeContent, highlightRange }: CodePaneProps) {
   const [isVisible, setIsVisible] = useState(false)
-  const highlightRef = useRef<HTMLDivElement>(null)
   
   // Debug logging
   console.log('CodePane received highlightRange:', highlightRange)
@@ -54,25 +57,34 @@ export default function CodePane({ codePane, codeContent, highlightRange }: Code
     return () => clearTimeout(timer)
   }, [codePane.filePath])
 
-  // Auto-scroll to highlighted lines when range changes
+  // Auto-scroll to highlighted section
   useEffect(() => {
-    if (highlightRef.current && highlightRange[0] >= 0) {
+    const [start, end] = highlightRange
+    if (start > 0 && end > 0) {
+      // Wait for the component to render
       const timer = setTimeout(() => {
-        highlightRef.current?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'center'
-        })
+        const container = document.querySelector('.code-container')
+        if (container) {
+          // Calculate the middle line of the highlight range
+          const middleLine = Math.floor((start + end) / 2)
+          // Estimate line height (adjust if needed)
+          const lineHeight = 20
+          // Calculate scroll position to center the highlighted section
+          const scrollTop = (middleLine - 1) * lineHeight - container.clientHeight / 2
+          container.scrollTop = Math.max(0, scrollTop)
+        }
       }, 100)
       return () => clearTimeout(timer)
     }
   }, [highlightRange])
+
 
   return (
     <div 
       key={codePane.filePath}
       className={`transition-opacity duration-300 h-full ${isVisible ? 'opacity-100' : 'opacity-0'}`}
     >
-      <div className="h-full bg-gray-950 rounded-lg overflow-auto">
+      <div className="code-container h-full bg-gray-950 rounded-lg overflow-auto">
         <SyntaxHighlighter
           language="python"
           style={nightOwl}
@@ -82,20 +94,13 @@ export default function CodePane({ codePane, codeContent, highlightRange }: Code
             const inRange = isLineInRange(lineNumber, highlightRange)
             console.log(`Line ${lineNumber}, Range: [${highlightRange[0]}, ${highlightRange[1]}], InRange: ${inRange}`)
             const props = createLineProps(lineNumber, highlightRange)
-            // Add ref to first highlighted line for auto-scroll
-            if (lineNumber === highlightRange[0]) {
-              return {
-                ...props,
-                ref: highlightRef
-              }
-            }
             return props
           }}
           customStyle={{
             margin: 0,
             padding: '1.25rem',
             backgroundColor: 'transparent',
-            fontSize: '0.9rem',
+            fontSize: '0.75rem',
             lineHeight: '1.6'
           }}
         >
