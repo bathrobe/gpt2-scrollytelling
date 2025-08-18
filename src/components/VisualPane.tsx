@@ -53,6 +53,14 @@ const componentResolver = (componentPath: string) => {
       return dynamic(() => import('../visuals/SpeedupVisualization'), {
         loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
       })
+    case 'visuals/GradientAccumulationVisual':
+      return dynamic(() => import('../visuals/GradientAccumulationVisual'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
+    case 'visuals/DDPVisual':
+      return dynamic(() => import('../visuals/DDPVisual'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
     default:
       return null
   }

@@ -86,5 +86,29 @@
       "filePath": "/code/model.py",
       "highlight": "1-10"
     }
+  },
+  {
+    "id": "accum",
+    "prosePath": "/prose/08-accum.md",
+    "visualPane": {
+      "componentPath": "visuals/GradientAccumulationVisual",
+      "props": {}
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "1-10"
+    }
+  },
+  {
+    "id": "ddp",
+    "prosePath": "/prose/09-ddp.md",
+    "visualPane": {
+      "componentPath": "visuals/DDPVisual",
+      "props": {}
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "363-403"
+    }
   }
 ]
