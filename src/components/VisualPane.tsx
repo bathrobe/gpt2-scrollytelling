@@ -41,6 +41,18 @@ const componentResolver = (componentPath: string) => {
       return dynamic(() => import('../visuals/YouTubeDisplay'), {
         loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
       })
+    case 'visuals/ResidualFlowVisual':
+      return dynamic(() => import('../visuals/ResidualFlowVisual'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
+    case 'visuals/AttentionOptimizationVisual':
+      return dynamic(() => import('../visuals/AttentionOptimizationVisual'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
+    case 'visuals/SpeedupVisualization':
+      return dynamic(() => import('../visuals/SpeedupVisualization'), {
+        loading: () => <div className="animate-pulse bg-gray-200 w-full h-32 rounded" />
+      })
     default:
       return null
   }

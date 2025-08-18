@@ -55,18 +55,36 @@
     "id": "blocks",
     "prosePath": "/prose/05-block.md",
     "visualPane": {
-      "componentPath": "visuals/YouTubeDisplay",
-      "props": {
-        "url": "https://www.youtube.com/watch?v=DAOcjicFr1Y",
-        "start": 2820,
-        "playing": false,
-        "controls": true,
-        "caption": "Serena Yeung's excellent description of residuals in CNNs was my introduction to the concept, and I highly recommend it!"
-      }
+      "componentPath": "visuals/ResidualFlowVisual",
+      "props": {}
     },
     "codePane": {
       "filePath": "/code/model.py",
       "highlight": "91-103"
+    }
+  },
+  {
+    "id": "attention",
+    "prosePath": "/prose/06-attn.md",
+    "visualPane": {
+      "componentPath": "visuals/AttentionOptimizationVisual",
+      "props": {}
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "32-68"
+    }
+  },
+  {
+    "id": "speed",
+    "prosePath": "/prose/07-speed.md",
+    "visualPane": {
+      "componentPath": "visuals/SpeedupVisualization",
+      "props": {}
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "1-10"
     }
   }
 ]

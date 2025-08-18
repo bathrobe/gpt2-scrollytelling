@@ -46,6 +46,13 @@ export function loadStoryData(): any[] {
     const codeContent = loadCodeFile(step.codePane.filePath);
     const highlightRange = parseHighlightRange(step.codePane.highlight);
     
+    // Load speedup data for the speed visualization
+    if (step.id === 'speed') {
+      const speedupDataPath = path.join(contentRoot, 'speedups.txt');
+      const speedupData = fs.readFileSync(speedupDataPath, 'utf-8');
+      step.visualPane.props.data = speedupData;
+    }
+    
     return {
       ...step,
       proseHtml: proseData.html,

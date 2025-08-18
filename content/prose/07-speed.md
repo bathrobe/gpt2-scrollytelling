@@ -1,0 +1,52 @@
+## Optimizations
+
+After dialing in the basic architecture, Karpathy spends much of the 4 hours of lecture slowly speeding up the model's ability to train. Full of tips, technical details, and weird quirks, I found this section exciting to witness. On the right sidebar is one example among many, as we walked through reducing unnecessary precision in the weights and gradually decreasing the time it took to process our batches.
+
+We get a baseline with the CPU, then head to the GPU. First, we use full 32-bit precision, then a fancy tensor-float 32 bit precision that lops off some of the bits in the mantissa (the small values that are less significant). Then, we use a half-precision 16-bit format that lops off even more bits.
+
+And when it's time for what Karpathy calls "the heavy artillery," we compile the PyTorch model with `torch.compile`, which intelligently fuses a bunch of related operations so that they all take place in one operation without any round trips to the GPU's memory. This was pretty spellbinding to see.
+
+Another cool quirk that isn't shown: Karpathy also (in a mischevious tone) mentions that models just tend to like numbers that are exponents of 2, i.e. binary numbers. So we pad out our vocabulary to be a power of 2, make sure all our batch sizes and sequence lengths are the same, and so on. It's kind of silly, and yet profound at the same time.
+
+```
+# this is cpu
+step 0: loss = 10.9355 dt: 19340.739965438843 tokens/sec: 847.1237413499989
+step 1: loss = 9.3971 dt: 19536.502361297607 tokens/sec: 838.6352734488028
+step 2: loss = 8.9430 dt: 21089.752674102783 tokens/sec: 776.8701820822572
+step 3: loss = 8.8192 dt: 19469.879865646362 tokens/sec: 841.5049354725992
+step 4: loss = 8.4879 dt: 20380.1851272583 tokens/sec: 803.9181144672998
+step 5: loss = 8.4655 dt: 19631.669282913208 tokens/sec: 834.5698862327577
+
+# this is gpu with full precision (full float32)
+step 0: loss = 10.9355 dt: 965.0804996490479 tokens/sec: 16976.822146917333
+step 1: loss = 9.3971 dt: 763.3383274078369 tokens/sec: 21463.61503376516
+step 2: loss = 8.9430 dt: 763.225793838501 tokens/sec: 21466.779729232872
+step 3: loss = 8.8192 dt: 763.2193565368652 tokens/sec: 21466.96078876062
+step 4: loss = 8.4879 dt: 763.0760669708252 tokens/sec: 21470.991830525345
+step 5: loss = 8.4655 dt: 763.1289958953857 tokens/sec: 21469.502650435283
+
+# this is gpu with tf32 (tensor float, some precision lopped off the mantissa)
+step 0: loss = 10.9355 dt: 482.4206829071045 tokens/sec: 33962.05963075369
+step 1: loss = 9.3970 dt: 229.64096069335938 tokens/sec: 71346.15684645924
+step 2: loss = 8.9428 dt: 230.682373046875 tokens/sec: 71024.06561714513
+step 3: loss = 8.8187 dt: 230.28826713562012 tokens/sec: 71145.61329497183
+step 4: loss = 8.4878 dt: 230.23533821105957 tokens/sec: 71161.96899791545
+step 5: loss = 8.4651 dt: 230.66115379333496 tokens/sec: 71030.59934695177
+
+# this is bf16 (more precision lopped off, still memory bound and still having lotsa stuff tf32 and f32)
+step 0, loss: 10.935997009277344, dt: 453.19ms, tok/sec: 36152.62
+step 1, loss: 9.397346496582031, dt: 143.39ms, tok/sec: 114262.42
+step 2, loss: 8.94434928894043, dt: 142.12ms, tok/sec: 115281.21
+step 3, loss: 8.824180603027344, dt: 141.99ms, tok/sec: 115390.20
+step 4, loss: 8.488617897033691, dt: 141.79ms, tok/sec: 115550.66
+step 5, loss: 8.469232559204102, dt: 141.70ms, tok/sec: 115624.34
+
+# this is after adding torch.compile(model) right after we move the model to cuda
+step 0, loss: 10.9359130859375, dt: 26467.96ms, tok/sec: 619.01
+step 1, loss: 9.396797180175781, dt: 89.66ms, tok/sec: 182734.43
+step 2, loss: 8.943729400634766, dt: 89.48ms, tok/sec: 183105.45
+step 3, loss: 8.821422576904297, dt: 89.27ms, tok/sec: 183530.90
+step 4, loss: 8.488594055175781, dt: 89.99ms, tok/sec: 182056.68
+step 5, loss: 8.467275619506836, dt: 89.65ms, tok/sec: 182762.14
+# granted, it takes a while to start the run
+```
