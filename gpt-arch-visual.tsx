@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const GPTArchitectureVisual = () => {
-  const [hoveredComponent, setHoveredComponent] = useState(null);
+  const [hoveredComponent, setHoveredComponent] = useState<string | null>(null);
   const [animationStep, setAnimationStep] = useState(0);
 
   useEffect(() => {

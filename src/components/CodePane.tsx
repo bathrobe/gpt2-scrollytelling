@@ -46,9 +46,6 @@ const createLineProps = (lineNumber: number, range: [number, number]) => {
 export default function CodePane({ codePane, codeContent, highlightRange }: CodePaneProps) {
   const [isVisible, setIsVisible] = useState(false)
   
-  // Debug logging
-  console.log('CodePane received highlightRange:', highlightRange)
-  console.log('CodePane received codePane:', codePane)
 
   // Cross-fade transition when codePane changes
   useEffect(() => {
@@ -63,25 +60,25 @@ export default function CodePane({ codePane, codeContent, highlightRange }: Code
     if (start > 0 && end > 0) {
       // Wait for the component to render and transition to complete
       const timer = setTimeout(() => {
-        const container = document.querySelector('.code-container')
+        const container = document.querySelector('.code-container') as HTMLElement
         if (container) {
           // Find all line number spans
           const lineNumberSpans = container.querySelectorAll('.linenumber')
           
           // Find the span for the start line
-          let targetElement = null
+          let targetElement: HTMLElement | null = null
           lineNumberSpans.forEach(span => {
             const lineNum = parseInt(span.textContent || '0')
-            if (lineNum === start) {
+            if (lineNum === start && span.parentElement) {
               // Get the parent line element
-              targetElement = span.parentElement
+              targetElement = span.parentElement as HTMLElement
             }
           })
           
-          if (targetElement) {
+          if (targetElement !== null) {
             // Calculate position to center the highlighted section
             const containerRect = container.getBoundingClientRect()
-            const elementRect = targetElement.getBoundingClientRect()
+            const elementRect = (targetElement as HTMLElement).getBoundingClientRect()
             const relativeTop = elementRect.top - containerRect.top + container.scrollTop
             
             // Scroll to position the highlight at 1/3 from top for better visibility
@@ -121,7 +118,6 @@ export default function CodePane({ codePane, codeContent, highlightRange }: Code
           wrapLines={true}
           lineProps={(lineNumber) => {
             const inRange = isLineInRange(lineNumber, highlightRange)
-            console.log(`Line ${lineNumber}, Range: [${highlightRange[0]}, ${highlightRange[1]}], InRange: ${inRange}`)
             const props = createLineProps(lineNumber, highlightRange)
             return props
           }}
