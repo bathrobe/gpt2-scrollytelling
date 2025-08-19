@@ -47,23 +47,47 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
   return (
     <div className="min-h-screen">
       {/* Header */}
-      <header className="bg-gray-950 border-b border-gray-800 py-8 px-8 lg:px-12 xl:px-20">
+      <header className="py-10 px-8 lg:px-12 xl:px-20" style={{
+        background: 'linear-gradient(135deg, #0a0e27 0%, #151932 100%)',
+        borderBottom: '1px solid rgba(100, 255, 218, 0.15)'
+      }}>
         <div className="max-w-[1800px] mx-auto">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-100 mb-2">A Brief Tour of my NanoGPT</h1>
-              <div className="flex flex-wrap gap-2">
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-800/50 text-gray-300 border border-gray-700/50">
-                  <span className="text-gray-500 mr-1.5">words by</span>
-                  <span className="text-gray-200">Joe Holmes</span>
+              <h1 className="text-4xl font-bold mb-4" style={{
+                fontFamily: '"SF Mono", "Monaco", "Inconsolata", "Consolas", monospace',
+                color: '#e0e6ed',
+                letterSpacing: '1px'
+              }}>
+                A Brief Tour of my NanoGPT
+              </h1>
+              <div className="flex flex-wrap gap-3">
+                <span className="inline-flex items-center px-4 py-1.5 rounded-lg text-xs" style={{
+                  fontFamily: '"SF Mono", "Monaco", "Inconsolata", "Consolas", monospace',
+                  background: 'rgba(100, 255, 218, 0.1)',
+                  border: '1px solid rgba(100, 255, 218, 0.3)',
+                  letterSpacing: '0.5px'
+                }}>
+                  <span style={{ color: 'rgba(100, 255, 218, 0.8)', marginRight: '8px' }}>words by</span>
+                  <span style={{ color: '#64f5d0', fontWeight: 'bold' }}>Joe Holmes</span>
                 </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-800/50 text-gray-300 border border-gray-700/50">
-                  <span className="text-gray-500 mr-1.5">code by</span>
-                  <span className="text-gray-200">Claude Code</span>
+                <span className="inline-flex items-center px-4 py-1.5 rounded-lg text-xs" style={{
+                  fontFamily: '"SF Mono", "Monaco", "Inconsolata", "Consolas", monospace',
+                  background: 'rgba(102, 126, 234, 0.1)',
+                  border: '1px solid rgba(102, 126, 234, 0.3)',
+                  letterSpacing: '0.5px'
+                }}>
+                  <span style={{ color: 'rgba(102, 126, 234, 0.8)', marginRight: '8px' }}>code by</span>
+                  <span style={{ color: '#667eea', fontWeight: 'bold' }}>Claude Code</span>
                 </span>
-                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-800/50 text-gray-300 border border-gray-700/50">
-                  <span className="text-gray-500 mr-1.5">tutorial by</span>
-                  <span className="text-gray-200">Andrej Karpathy</span>
+                <span className="inline-flex items-center px-4 py-1.5 rounded-lg text-xs" style={{
+                  fontFamily: '"SF Mono", "Monaco", "Inconsolata", "Consolas", monospace',
+                  background: 'rgba(255, 200, 100, 0.1)',
+                  border: '1px solid rgba(255, 200, 100, 0.3)',
+                  letterSpacing: '0.5px'
+                }}>
+                  <span style={{ color: 'rgba(255, 200, 100, 0.8)', marginRight: '8px' }}>tutorial by</span>
+                  <span style={{ color: '#ffc864', fontWeight: 'bold' }}>Andrej Karpathy</span>
                 </span>
               </div>
             </div>
