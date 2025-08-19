@@ -59,9 +59,9 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
       <div className="px-8 py-16 lg:px-12 xl:px-20 2xl:px-24">
         <div className="prose prose-lg prose-invert prose-gray prose-p:text-gray-300 prose-headings:text-gray-100" style={{ maxWidth: '65ch' }}>
           <Scrollama onStepEnter={onStepEnter} offset={0.1}>
-            {storyData.map((step) => (
+            {storyData.map((step, index) => (
               <Step data={step.id} key={step.id}>
-                <section className="min-h-[60vh] mb-32">
+                <section className={`min-h-[60vh] ${index === storyData.length - 1 ? 'mb-[100vh]' : 'mb-32'}`}>
                   <div 
                     dangerouslySetInnerHTML={{ __html: step.proseHtml }}
                   />

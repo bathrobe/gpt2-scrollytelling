@@ -3,8 +3,26 @@
     "id": "intro-training-results",
     "prosePath": "/prose/01-intro.md",
     "visualPane": {
-      "componentPath": "visuals/TrainingPlotDisplay",
-      "props": {}
+      "componentPath": "visuals/YouTubeDisplay",
+      "props": {
+        "url": "https://www.youtube.com/watch?v=l8pRSuU81PU"
+      }
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "10-12"
+    }
+  },
+  {
+    "id": "eval",
+    "prosePath": "/prose/011.md",
+    "visualPane": {
+      "componentPath": "visuals/ImageDisplay",
+      "props": {
+        "src": "/images/eval2.jpg",
+        "alt": "Training and validation loss curves",
+        "caption": "nanoGPT training progress showing convergence to OpenAI's GPT-2 checkpoint validation loss"
+      }
     },
     "codePane": {
       "filePath": "/code/model.py",
@@ -105,6 +123,22 @@
     "visualPane": {
       "componentPath": "visuals/DDPVisual",
       "props": {}
+    },
+    "codePane": {
+      "filePath": "/code/model.py",
+      "highlight": "363-403"
+    }
+  },
+  {
+    "id": "ssh",
+    "prosePath": "/prose/10-ssh.md",
+    "visualPane": {
+      "componentPath": "visuals/ImageDisplay",
+      "props": {
+        "src": "/images/pi.png",
+        "alt": "prime intellect dashboard",
+        "caption": "rent is expensive"
+      }
     },
     "codePane": {
       "filePath": "/code/model.py",

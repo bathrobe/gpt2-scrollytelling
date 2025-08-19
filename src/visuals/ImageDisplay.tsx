@@ -7,13 +7,17 @@ interface ImageDisplayProps {
 export default function ImageDisplay({ src, alt, caption }: ImageDisplayProps) {
   return (
     <div className="w-full h-full flex flex-col justify-center items-center p-4">
-      <div className="w-full h-full flex flex-col justify-center items-center">
-        <div className="bg-gray-900 rounded-lg overflow-hidden shadow-2xl max-w-full max-h-full flex items-center justify-center">
+      <div className="flex flex-col justify-center items-center w-full h-full">
+        <div className="bg-gray-900 rounded-lg overflow-hidden shadow-2xl flex items-center justify-center" style={{ maxHeight: '90%', maxWidth: '100%' }}>
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img 
             src={src} 
             alt={alt}
-            className="max-w-full max-h-full object-contain"
+            className="object-contain w-full h-full"
+            style={{ 
+              maxHeight: '100%',
+              maxWidth: '100%'
+            }}
             onError={(e) => {
               // Fallback if image doesn't exist
               const target = e.target as HTMLImageElement
