@@ -49,8 +49,25 @@ export default function ScrollyClient({ storyData }: ScrollyClientProps) {
       {/* Header */}
       <header className="bg-gray-950 border-b border-gray-800 py-8 px-8 lg:px-12 xl:px-20">
         <div className="max-w-[1800px] mx-auto">
-          <h1 className="text-3xl font-bold text-gray-100 mb-2">A Brief Tour of my NanoGPT</h1>
-          <p className="text-gray-400">by Joe Holmes</p>
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-100 mb-2">A Brief Tour of my NanoGPT</h1>
+              <div className="flex flex-wrap gap-2">
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-800/50 text-gray-300 border border-gray-700/50">
+                  <span className="text-gray-500 mr-1.5">words by</span>
+                  <span className="text-gray-200">Joe Holmes</span>
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-800/50 text-gray-300 border border-gray-700/50">
+                  <span className="text-gray-500 mr-1.5">code by</span>
+                  <span className="text-gray-200">Claude Code</span>
+                </span>
+                <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-800/50 text-gray-300 border border-gray-700/50">
+                  <span className="text-gray-500 mr-1.5">tutorial by</span>
+                  <span className="text-gray-200">Andrej Karpathy</span>
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </header>
       

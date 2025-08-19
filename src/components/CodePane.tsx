@@ -61,22 +61,51 @@ export default function CodePane({ codePane, codeContent, highlightRange }: Code
   useEffect(() => {
     const [start, end] = highlightRange
     if (start > 0 && end > 0) {
-      // Wait for the component to render
+      // Wait for the component to render and transition to complete
       const timer = setTimeout(() => {
         const container = document.querySelector('.code-container')
         if (container) {
-          // Calculate the middle line of the highlight range
-          const middleLine = Math.floor((start + end) / 2)
-          // Estimate line height (adjust if needed)
-          const lineHeight = 20
-          // Calculate scroll position to center the highlighted section
-          const scrollTop = (middleLine - 1) * lineHeight - container.clientHeight / 2
-          container.scrollTop = Math.max(0, scrollTop)
+          // Find all line number spans
+          const lineNumberSpans = container.querySelectorAll('.linenumber')
+          
+          // Find the span for the start line
+          let targetElement = null
+          lineNumberSpans.forEach(span => {
+            const lineNum = parseInt(span.textContent || '0')
+            if (lineNum === start) {
+              // Get the parent line element
+              targetElement = span.parentElement
+            }
+          })
+          
+          if (targetElement) {
+            // Calculate position to center the highlighted section
+            const containerRect = container.getBoundingClientRect()
+            const elementRect = targetElement.getBoundingClientRect()
+            const relativeTop = elementRect.top - containerRect.top + container.scrollTop
+            
+            // Scroll to position the highlight at 1/3 from top for better visibility
+            const scrollPosition = relativeTop - containerRect.height / 3
+            
+            container.scrollTo({
+              top: Math.max(0, scrollPosition),
+              behavior: 'smooth'
+            })
+          } else {
+            // Fallback to calculated scroll if we can't find the element
+            const lineHeight = 24
+            const targetLine = Math.max(start - 3, 1)
+            const scrollTop = (targetLine - 1) * lineHeight
+            container.scrollTo({
+              top: scrollTop,
+              behavior: 'smooth'
+            })
+          }
         }
-      }, 100)
+      }, 350) // Slight delay to ensure rendering is complete
       return () => clearTimeout(timer)
     }
-  }, [highlightRange])
+  }, [highlightRange, codePane.filePath])
 
 
   return (

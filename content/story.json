@@ -10,7 +10,7 @@
     },
     "codePane": {
       "filePath": "/code/model.py",
-      "highlight": "10-12"
+      "highlight": ""
     }
   },
   {
@@ -26,23 +26,21 @@
     },
     "codePane": {
       "filePath": "/code/model.py",
-      "highlight": "10-12"
+      "highlight": "535-537"
     }
   },
   {
-    "id": "attention-mechanism",
-    "prosePath": "/prose/02-attention.md",
+    "id": "nand",
+    "prosePath": "/prose/02-nand.md",
     "visualPane": {
       "componentPath": "visuals/CourseImageDisplay",
       "props": {
-        "src": "/images/overview.png",
-        "alt": "Multi-Head Attention Visualization",
-        "caption": "Multi-head attention allows the model to jointly attend to information from different representation subspaces"
+        "src": "/images/overview.png"
       }
     },
     "codePane": {
-      "filePath": "/code/model.py",
-      "highlight": "27-45"
+      "filePath": "/code/nand.hdl",
+      "highlight": ""
     }
   },
   {
@@ -90,7 +88,7 @@
     },
     "codePane": {
       "filePath": "/code/model.py",
-      "highlight": "32-68"
+      "highlight": "59-61"
     }
   },
   {
@@ -101,8 +99,8 @@
       "props": {}
     },
     "codePane": {
-      "filePath": "/code/model.py",
-      "highlight": "1-10"
+      "filePath": "/code/logs.txt",
+      "highlight": ""
     }
   },
   {
@@ -114,7 +112,7 @@
     },
     "codePane": {
       "filePath": "/code/model.py",
-      "highlight": "1-10"
+      "highlight": "327-336"
     }
   },
   {
@@ -126,7 +124,7 @@
     },
     "codePane": {
       "filePath": "/code/model.py",
-      "highlight": "363-403"
+      "highlight": "427-428"
     }
   },
   {
@@ -142,7 +140,7 @@
     },
     "codePane": {
       "filePath": "/code/model.py",
-      "highlight": "363-403"
+      "highlight": "460-471"
     }
   }
 ]
