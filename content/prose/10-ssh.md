@@ -6,4 +6,4 @@ But by no means was the process cheap! This is mostly because I kept screwing up
 
 All told though, this was one of those confidence boosting activities that made a simpler, saner project—fine-tuning a small OS LLM with RL someday—feel a lot more approachable. If you know what you're doing you will not spend as much as I did. I wrote this post to give the pain some meaning.
 
-Hope you enjoyed exploring Karpathy's 4 hour tutorial masterpiece with me! Next time I'm in the mood for deep ML study, I think I'll follow along with [Raschka's guide to instruction-tuning a from-scratch model](https://www.youtube.com/watch?v=4yNswvhPWCQ) like this one. If you enjoyed, follow me on [Twitter](https://twitter.com/joetforhire).
+Hope you enjoyed exploring Karpathy's 4 hour tutorial masterpiece with me! Next time I'm in the mood for deep ML study, I think I'll follow along with [Raschka's guide to instruction-tuning a from-scratch model](https://www.youtube.com/watch?v=4yNswvhPWCQ) like this one. If you enjoyed, follow me on [LinkedIn](https://www.linkedin.com/in/joe-holmes-285212240/).
